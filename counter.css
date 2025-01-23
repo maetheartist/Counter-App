@@ -1,65 +1,90 @@
+/* Base Styles */
+:root {
+    --background-color: #223105;
+    --text-color: black;
+    --counter-bg-color: #a1dd3b;
+    --button-bg-color: #192004;
+    --button-text-color: #a1dd3b;
+    --dark-toggle-bg-color: black;
+    --dark-toggle-border-color: rgb(142, 230, 10);
+}
+
 body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #223105;
+    min-height: 100vh;
+    margin: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: all 0.3s ease-in-out;
 }
 
-.dark {
-    background: black;
-    color: rgb(177, 171, 171);
-    
+/* Dark Mode */
+body.dark {
+    --background-color: black;
+    --text-color: rgb(177, 171, 171);
+    --counter-bg-color: #333;
+    --button-bg-color: #444;
+    --button-text-color: rgb(231, 219, 219);
 }
 
+/* Toggle Button */
 .dark-mode {
-    padding: 2px 6px;
-    background-color: black;
-    color: rgb(231, 219, 219);
+    padding: 6px 12px;
+    background-color: var(--dark-toggle-bg-color);
+    color: var(--button-text-color);
     border-radius: 20px;
-    border: solid 2px rgb(142, 230, 10);
-    margin-left: 80%;
+    border: solid 2px var(--dark-toggle-border-color);
+    position: absolute;
+    top: 10px;
+    right: 10px;
     cursor: pointer;
 }
 
+/* Counter Styles */
 .counter {
-    background-color: #a1dd3b;
+    background-color: var(--counter-bg-color);
     text-align: center;
-    font-size: 30px;
+    font-size: 1.5rem;
     margin-top: 50px;
     border-radius: 10px;
-    width: 400px;
+    width: 90%;
+    max-width: 400px;
     height: 500px;  
-    color: black; 
+    color: var(--text-color); 
 }
 
 .title-number-container {
     height: 80%;
 }
 
+/* Title */
 .counter-title {
-    font-size: 30px;
+    font-size: 1.5rem;
     width: 100%;
 }
 
+/* Number */
 .counter-number {
-    font-size: 150px;
+    font-size: 6rem;
     font-family: sans-serif;
     margin: 0;
 }
 
-.counter--limits {
-    background: #a1dd3b;
-}
-
-
+/* Reset Button */
 .btn-reset {
-    margin: 30px 0;
-    font-size: 50px;
+    margin: 20px 0;
+    font-size: 1.5rem;
     border: none;
     cursor: pointer;
+    background-color: var(--button-bg-color);
+    color: var(--button-text-color);
+    border-radius: 5px;
+    padding: 10px 20px;
 }
 
-
+/* Button Container */
 .btn {
     height: 20%;
     padding: 0;
@@ -68,17 +93,58 @@ body {
     justify-content: space-between;
 }
 
-.btn-minus:hover, .btn-plus:hover {
-    font-size: 80px;
-}
-
+/* Buttons */
 .btn button {
     margin: 0;
-    background-color: #192004;
+    background-color: var(--button-bg-color);
     width: 49.5%;
     height: 100px;
     border: none;
-    color: #a1dd3b;
-    font-size: 50px;
+    color: var(--button-text-color);
+    font-size: 1.5rem;
     cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-minus:hover, 
+.btn-plus:hover {
+    font-size: 2rem;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .counter {
+        height: auto;
+        padding: 20px;
+    }
+
+    .counter-number {
+        font-size: 4rem;
+    }
+
+    .btn button {
+        font-size: 1.2rem;
+        height: 80px;
+    }
+
+    .btn-reset {
+        font-size: 1.2rem;
+        padding: 8px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .counter-number {
+        font-size: 3rem;
+    }
+
+    .btn button {
+        font-size: 1rem;
+        height: 60px;
+    }
+
+    .btn-reset {
+        font-size: 1rem;
+        padding: 6px 12px;
+    }
 }
